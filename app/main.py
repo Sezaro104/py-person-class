@@ -16,13 +16,11 @@ def create_person_list(people_list: list) -> list:
 
     for person_dict in people_list:
         if "wife" in person_dict and person_dict["wife"] is not None:
-            Person.people[person_dict.get("name")].wife \
-                = Person.people[person_dict.get("wife")]
+            setattr(Person.people[person_dict.get("name")],
+                    "wife", Person.people[person_dict.get("wife")])
 
         if "husband" in person_dict and person_dict["husband"] is not None:
-            Person.people[person_dict.get("name")].husband \
-                = Person.people[person_dict.get("husband")]
+            setattr(Person.people[person_dict["name"]],
+                    "husband", Person.people[person_dict["husband"]])
 
     return persons
-
-
